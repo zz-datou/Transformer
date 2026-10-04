@@ -14,6 +14,20 @@ Transformer 的一个重要做法，就是让不同位置的相关信息结合�
 
 每个专业术语在首次出现时附上解释。向量先从饮料的甜度、酸度记录讲起，再用两张坐标图逐步说明数字顺序、维度和负数的位置，并区分人工评分与模型学到的表示。Q、K、V 先完整走一遍“找资料学做番茄炒蛋”的过程，再对应到数字计算。矩阵乘法、多头结果汇合、FFN、归一化、候选分数、损失和一次参数更新，都在对应位置给出可以跟着算的小例子。
 
+主文还新增了 7 类教学图：编号查表与位置相加、三本书与 Q/K/V、softmax 分数差距、注意力权重与 V 的贡献、未来位置遮罩、多头拼接与输出变换，以及训练修改参数与推理使用参数。图紧接对应例子，图旁说明从哪里开始看、数字怎样对应正文，以及教学简化和比喻的适用边界。所有静态图都可以点击打开原图，手机阅读时可放大查看数字。
+
+插图使用 SVG 格式，中文文字已转换为路径，阅读时不需要安装对应字体。新增 7 张图由 [generate-learning-diagrams.py](scripts/generate-learning-diagrams.py) 生成；复现时需要 Python、Matplotlib 和 Noto Sans CJK 字体。在仓库根目录运行以下命令，可同时生成 SVG 和供视觉检查的临时 PNG：
+
+```bash
+MPLCONFIGDIR=/tmp/transformer-mpl python3 scripts/generate-learning-diagrams.py --preview-dir /tmp/transformer-learning-previews
+```
+
+PNG 仅供本地预览，不作为正文图片，也不提交到仓库。只生成 SVG 时运行：
+
+```bash
+MPLCONFIGDIR=/tmp/transformer-mpl python3 scripts/generate-learning-diagrams.py
+```
+
 每章末尾配有“想一想与解答”：问题紧接本章内容，答案说明原因、计算过程和常见误解。两份文档均已补齐章末问答；[原理与计算参考](docs/Transformer-原理与计算参考.md)还给出完整算例、小实验及修改实验后的预期结果。
 
 内容以 Transformer 为主，GPU 用来解释计算与存储需求，Kubernetes 只简短说明运行管理的联系。后半部分区分网络架构、模型、生成方式、聊天产品与执行任务的系统；Jev 一章依据公开接口说明分类、评分、概率和置信度，并解释它怎样作为 Agent 的评估组件。
